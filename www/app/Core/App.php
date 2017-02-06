@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Utility;
+
 /**
  * Core App:
  *
@@ -68,10 +70,10 @@ class App {
      * @since 1.0
      */
     private function _parseUrl() {
-        if (isset($_GET["url"])) {
+        if (isset(Utility\Input::get("url"))) {
 
             // Trim, sanitise and return a exploded URL string.
-            return explode("/", filter_var(rtrim($_GET["url"], "/"), FILTER_SANITIZE_URL));
+            return explode("/", filter_var(rtrim(Utility\Input::get("url"), "/"), FILTER_SANITIZE_URL));
         }
         return [];
     }
