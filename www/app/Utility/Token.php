@@ -18,13 +18,13 @@ class Token {
      */
     public static function generate() {
         $maxTime = 60 * 60 * 24;
-        $csrfToken = Session::get("CSRF_TOKEN");
-        $storedTime = Session::get("CSRF_TOKEN_TIME");
+        $csrfToken = Session::get("SESSION_TOKEN");
+        $storedTime = Session::get("SESSION_TOKEN_TIME");
         if ($maxTime + $storedTime <= time() or empty($csrfToken)) {
-            Session::put("CSRF_TOKEN", md5(uniqid(rand(), true)));
-            Session::put("CSRF_TOKEN_TIME", time());
+            Session::put("SESSION_TOKEN", md5(uniqid(rand(), true)));
+            Session::put("SESSION_TOKEN_TIME", time());
         }
-        return Session::get("CSRF_TOKEN");
+        return Session::get("SESSION_TOKEN");
     }
 
     /**
@@ -36,9 +36,9 @@ class Token {
      */
     public static function check($token = "") {
         if (!$token) {
-            $token = Input::post("csrf_token");
+            $token = Input::post("SESSION_TOKEN");
         }
-        return($token === Session::get("CSRF_TOKEN") and ! empty($token));
+        return($token === Session::get("SESSION_TOKEN") and ! empty($token));
     }
 
 }
