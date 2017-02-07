@@ -11,7 +11,7 @@ namespace App\Utility;
 class Redirect {
 
     /**
-     * To:
+     * To: Redirects to a specific path.
      * @access public
      * @param string $location [optional]
      * @return void

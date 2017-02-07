@@ -33,7 +33,7 @@ class Cookie {
     }
 
     /**
-     * Get:
+     * Get: Returns the value of a specific key of the COOKIE super-global
      * @access public
      * @param string $key
      * @return string

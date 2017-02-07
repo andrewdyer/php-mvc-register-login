@@ -11,7 +11,7 @@ namespace App\Utility;
 class Hash {
 
     /**
-     * Generate:
+     * Generate: Returns a generate a hash value, as a string.
      * @access public
      * @param string $string
      * @param string $salt [optional]
@@ -23,7 +23,8 @@ class Hash {
     }
 
     /**
-     * Generate Salt:
+     * Generate Salt: Returns a cryptographic salt of a specified length, as a
+     * string.
      * @access public
      * @param integer $length
      * @return string
@@ -39,7 +40,7 @@ class Hash {
     }
 
     /**
-     * Generate Unique:
+     * Generate Unique: Returns a unique identifier, as a string.
      * @access public
      * @return string
      * @since 1.0.1

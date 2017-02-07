@@ -11,7 +11,8 @@ namespace App\Utility;
 class Input {
 
     /**
-     * Exists:
+     * Exists: Determines if a request exists by checking if the GET or POST
+     * super-global is empty.
      * @access public
      * @param string $type [optional]
      * @return boolean
@@ -28,7 +29,7 @@ class Input {
     }
 
     /**
-     * Get:
+     * Get: Returns the value of a specific key of the GET super-global.
      * @access public
      * @param string $key
      * @return string
@@ -39,7 +40,7 @@ class Input {
     }
 
     /**
-     * Post:
+     * Post: Returns the value of a specific key of the POST super-global.
      * @access public
      * @param string $key
      * @return string

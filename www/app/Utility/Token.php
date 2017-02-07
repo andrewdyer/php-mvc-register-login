@@ -11,7 +11,7 @@ namespace App\Utility;
 class Token {
 
     /**
-     * Generate:
+     * Generate: Returns a CSRF token and generate a new one if expired.
      * @access public
      * @return string
      * @since 1.0.1
@@ -28,7 +28,8 @@ class Token {
     }
 
     /**
-     * Check:
+     * Check: Checks if the CSRF token stored in the session is same as in the
+     * form submitted.
      * @access public
      * @param string $token [optional]
      * @return boolean

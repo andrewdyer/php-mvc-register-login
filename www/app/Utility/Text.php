@@ -10,11 +10,13 @@ namespace App\Utility;
  */
 class Text {
 
-    /** @var array */
+    /** @var array The texts array from the application configuration file. */
     private static $_texts = [];
 
     /**
-     * Get:
+     * Get: Returns the value of a specific key from the texts array in the
+     * application configuration file if it exists, otherwise an empty string is
+     * returned.
      * @access public
      * @param string $key
      * @param array $data [optional]

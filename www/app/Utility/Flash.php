@@ -11,7 +11,8 @@ namespace App\Utility;
 class Flash {
 
     /**
-     * Message:
+     * Message: Sets a session message or returns the value of a specific key of
+     * the session.
      * @access public
      * @param string $key
      * @param string $value [optional]
@@ -29,7 +30,8 @@ class Flash {
     }
 
     /**
-     * Danger:
+     * Danger: Sets a message or returns the value of the FLASH_DANGER key of
+     * the session.
      * @access public
      * @param string $value [optional]
      * @return string 
@@ -40,7 +42,8 @@ class Flash {
     }
 
     /**
-     * Info:
+     * Info: Sets a message or returns the value of the FLASH_INFO key of the
+     * session.
      * @access public
      * @param string $value [optional]
      * @return string 
@@ -51,7 +54,8 @@ class Flash {
     }
 
     /**
-     * Success:
+     * Success: Sets a message or returns the value of the FLASH_SUCCESS key of
+     * the session.
      * @access public
      * @param string $value [optional]
      * @return string 
@@ -62,7 +66,8 @@ class Flash {
     }
 
     /**
-     * Warning:
+     * Warning: Sets a message or returns the value of the FLASH_WARNING key of
+     * the session.
      * @access public
      * @param string $value [optional]
      * @return string 
