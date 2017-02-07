@@ -30,7 +30,7 @@ class Token {
     /**
      * Check:
      * @access public
-     * @param string $token
+     * @param string $token [optional]
      * @return boolean
      * @since 1.0.1
      */

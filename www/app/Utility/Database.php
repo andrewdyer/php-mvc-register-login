@@ -53,7 +53,7 @@ class Database {
      * @access public
      * @param string $action
      * @param string $table
-     * @param array $where
+     * @param array $where [optional]
      * @return Database|boolean
      * @since 1.0.1
      */
@@ -91,7 +91,7 @@ class Database {
      * Delete:
      * @access public
      * @param string $table
-     * @param array $where
+     * @param array $where [optional]
      * @return Database|boolean
      * @since 1.0.1
      */
@@ -140,7 +140,7 @@ class Database {
      * @return string|boolean
      * @since 1.0.1
      */
-    public function insert($table, array $fields = []) {
+    public function insert($table, array $fields) {
         if (count($fields)) {
             $params = [];
             foreach ($fields as $key => $value) {
@@ -159,7 +159,7 @@ class Database {
      * Query:
      * @access public
      * @param string $sql
-     * @param array $params
+     * @param array $params [optional]
      * @return Database
      * @since 1.0.1
      */
@@ -182,7 +182,7 @@ class Database {
     /**
      * Results:
      * @access public
-     * @param integer $key
+     * @param integer $key [optional]
      * @return array
      * @since 1.0.1
      */
@@ -194,7 +194,7 @@ class Database {
      * Select:
      * @access public
      * @param string $table
-     * @param array $where
+     * @param array $where [optional]
      * @return Database|boolean
      * @since 1.0.1
      */
@@ -211,7 +211,7 @@ class Database {
      * @return boolean
      * @since 1.0.1
      */
-    public function update($table, $id, array $fields = []) {
+    public function update($table, $id, array $fields) {
         if (count($fields)) {
             $x = 1;
             $set = "";

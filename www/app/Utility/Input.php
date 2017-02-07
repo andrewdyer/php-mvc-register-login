@@ -13,7 +13,7 @@ class Input {
     /**
      * Exists:
      * @access public
-     * @param string $type
+     * @param string $type [optional]
      * @return boolean
      * @since 1.0.1
      */

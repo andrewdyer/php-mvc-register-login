@@ -14,7 +14,7 @@ class Flash {
      * Message:
      * @access public
      * @param string $key
-     * @param string $value
+     * @param string $value [optional]
      * @return string 
      * @since 1.0.1
      */
@@ -31,7 +31,7 @@ class Flash {
     /**
      * Danger:
      * @access public
-     * @param string $value
+     * @param string $value [optional]
      * @return string 
      * @since 1.0.1
      */
@@ -42,7 +42,7 @@ class Flash {
     /**
      * Info:
      * @access public
-     * @param string $value
+     * @param string $value [optional]
      * @return string 
      * @since 1.0.1
      */
@@ -53,7 +53,7 @@ class Flash {
     /**
      * Success:
      * @access public
-     * @param string $value
+     * @param string $value [optional]
      * @return string 
      * @since 1.0.1
      */
@@ -64,7 +64,7 @@ class Flash {
     /**
      * Warning:
      * @access public
-     * @param string $value
+     * @param string $value [optional]
      * @return string 
      * @since 1.0.1
      */

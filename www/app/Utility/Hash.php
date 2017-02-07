@@ -14,7 +14,7 @@ class Hash {
      * Generate:
      * @access public
      * @param string $string
-     * @param string $salt
+     * @param string $salt [optional]
      * @return string
      * @since 1.0.1
      */

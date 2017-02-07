@@ -27,7 +27,7 @@ class View {
      * @return void
      * @since 1.0
      */
-    public function addCSS($files = []) {
+    public function addCSS($files) {
 
         // Cast the value of $files to type array if it is not already.
         if (!is_array($files)) {
@@ -65,7 +65,7 @@ class View {
      * @return void
      * @since 1.0
      */
-    public function addJS($files = []) {
+    public function addJS($files) {
 
         // Cast the value of $files to type array if it is not already.
         if (!is_array($files)) {
@@ -124,7 +124,7 @@ class View {
 
     /**
      * Make URL: Creates and returns a clean internal URL.
-     * @param mixed $path
+     * @param mixed $path [optional]
      * @return string
      */
     public function makeURL($path = "") {
@@ -138,14 +138,32 @@ class View {
      * Render: Requires in a view file and sets any view data if specified.
      * @access public
      * @param string $filepath
-     * @param array $data
+     * @param array $data [optional]
      * @return void
      * @since 1.0
      */
-    public function render($filepath = "", array $data = []) {
+    public function render($filepath, array $data = []) {
         $this->addData($data);
         $this->getFile(DEFAULT_HEADER_PATH);
         $this->getFile($filepath);
+        $this->getFile(DEFAULT_FOOTER_PATH);
+    }
+
+    /**
+     * Render Multiple: Requires in multiple view file and sets any view data if
+     * specified.
+     * @access public
+     * @param array $filepaths
+     * @param array $data [optional]
+     * @return void
+     * @since 1.0
+     */
+    public function renderMultiple(array $filepaths, array $data = []) {
+        $this->addData($data);
+        $this->getFile(DEFAULT_HEADER_PATH);
+        foreach ($filepaths as $filepath) {
+            $this->getFile($filepath);
+        }
         $this->getFile(DEFAULT_FOOTER_PATH);
     }
 
@@ -154,11 +172,11 @@ class View {
      * view data if specified, without the header and footer templates.
      * @access public
      * @param string $filepath
-     * @param array $data
+     * @param array $data [optional]
      * @return void
      * @since 1.0
      */
-    public function renderWithoutHeaderAndFooter($filepath = "", array $data = []) {
+    public function renderWithoutHeaderAndFooter($filepath, array $data = []) {
         $this->addData($data);
         $this->getFile($filepath);
     }

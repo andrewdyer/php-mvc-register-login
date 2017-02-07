@@ -13,7 +13,7 @@ class Redirect {
     /**
      * To:
      * @access public
-     * @param string $location
+     * @param string $location [optional]
      * @return void
      * @since 1.0.1
      */

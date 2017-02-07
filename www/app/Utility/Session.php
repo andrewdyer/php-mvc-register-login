@@ -65,7 +65,7 @@ class Session {
      */
     public static function init() {
         // If no session exist, start the session.
-        if (session_id() == '') {
+        if (session_id() == "") {
             session_start();
         }
     }
