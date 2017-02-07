@@ -22,7 +22,13 @@ return [
     //
     // =========================================================================
     "TEXTS" => [
-        "TEST" => "this is a test"
+        "VALIDATE_MISSING_METHOD" => "Unable to validate %ITEM%!",
+        "VALIDATE_MATCHES_RULE" => "%RULE_VALUE% must match %ITEM%.",
+        "VALIDATE_MAX_CHARACTERS_RULE" => "%ITEM% can only be a maximum of %RULE_VALUE% characters.",
+        "VALIDATE_MIN_CHARACTERS_RULE" => "%ITEM% must be a minimum of %RULE_VALUE% characters.",
+        "VALIDATE_REQUIRED_RULE" => "%ITEM% is required!",
+        "VALIDATE_UNIQUE_RULE" => "%ITEM% already exists.",
+        "" => "",
     ],
     //
     // =========================================================================

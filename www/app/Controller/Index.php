@@ -20,7 +20,7 @@ class Index extends Core\Controller {
      * @return void
      */
     public function index() {
-
+        
         // Set any dependencies, data and render the view.
         $this->View->addCSS("css/index.css");
         $this->View->addJS("js/index.jquery.js");
