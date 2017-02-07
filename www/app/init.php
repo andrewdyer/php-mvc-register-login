@@ -9,6 +9,7 @@ define("ROOT", realpath(dirname(__FILE__) . "/../") . "/");
 define("APP_NAME", "myApp");
 define("APP_ROOT", ROOT . "app/");
 define("APP_URL", "http://" . $_SERVER['HTTP_HOST'] . str_replace('public', '', dirname($_SERVER['SCRIPT_NAME'])) . "/");
+define("APP_CONFIG_FILE", APP_ROOT . "config.php");
 
 // Public Config
 define("PUBLIC_ROOT", ROOT . "public_html/");
