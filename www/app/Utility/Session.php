@@ -54,7 +54,7 @@ class Session {
      * @since 1.0.1
      */
     public static function get($key) {
-        return $_SESSION[$key];
+        return($_SESSION[$key]);
     }
 
     /**
@@ -79,7 +79,7 @@ class Session {
      * @since 1.0.1
      */
     public static function put($key, $value) {
-        return $_SESSION[$key] = $value;
+        return($_SESSION[$key] = $value);
     }
 
 }

@@ -19,7 +19,7 @@ class Hash {
      * @since 1.0.1
      */
     public static function generate($string, $salt = "") {
-        return hash("sha256", $string . $salt);
+        return(hash("sha256", $string . $salt));
     }
 
     /**
@@ -45,7 +45,7 @@ class Hash {
      * @since 1.0.1
      */
     public static function generateUnique() {
-        return self::generate(uniqid());
+        return(self::generate(uniqid()));
     }
 
 }

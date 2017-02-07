@@ -87,7 +87,7 @@ class View {
      * @return string
      */
     public function escapeHTML($string) {
-        return htmlentities($string, HTMLENTITIES_FLAGS, HTMLENTITIES_ENCODING, HTMLENTITIES_DOUBLE_ENCODE);
+        return(htmlentities($string, HTMLENTITIES_FLAGS, HTMLENTITIES_ENCODING, HTMLENTITIES_DOUBLE_ENCODE));
     }
 
     /**
@@ -96,7 +96,7 @@ class View {
      * @return string
      */
     public function getCSS() {
-        return $this->_linkTags;
+        return($this->_linkTags);
     }
 
     /**
@@ -119,7 +119,7 @@ class View {
      * @return string
      */
     public function getJS() {
-        return $this->_scriptTags;
+        return($this->_scriptTags);
     }
 
     /**
@@ -129,9 +129,9 @@ class View {
      */
     public function makeURL($path = "") {
         if (is_array($path)) {
-            return APP_URL . implode("/", $path);
+            return(APP_URL . implode("/", $path));
         }
-        return APP_URL . $path;
+        return(APP_URL . $path);
     }
 
     /**

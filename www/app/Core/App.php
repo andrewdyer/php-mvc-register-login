@@ -73,7 +73,7 @@ class App {
         if (($url = Utility\Input::get("url"))) {
 
             // Trim, sanitise and return a exploded URL string.
-            return explode("/", filter_var(rtrim($url, "/"), FILTER_SANITIZE_URL));
+            return(explode("/", filter_var(rtrim($url, "/"), FILTER_SANITIZE_URL)));
         }
         return [];
     }

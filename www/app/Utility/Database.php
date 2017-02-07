@@ -84,7 +84,7 @@ class Database {
      * @since 1.0.1
      */
     public function count() {
-        return $this->_count;
+        return($this->_count);
     }
 
     /**
@@ -96,7 +96,7 @@ class Database {
      * @since 1.0.1
      */
     public function delete($table, array $where = []) {
-        return $this->action('DELETE', $table, $where);
+        return($this->action('DELETE', $table, $where));
     }
 
     /**
@@ -106,7 +106,7 @@ class Database {
      * @since 1.0.1
      */
     public function error() {
-        return $this->_error;
+        return($this->_error);
     }
 
     /**
@@ -116,7 +116,7 @@ class Database {
      * @since 1.0.1
      */
     public function first() {
-        return $this->results(0);
+        return($this->results(0));
     }
 
     /**
@@ -129,7 +129,7 @@ class Database {
         if (!isset(self::$_Database)) {
             self::$_Database = new Database();
         }
-        return self::$_Database;
+        return(self::$_Database);
     }
 
     /**
@@ -149,7 +149,7 @@ class Database {
             $columns = implode("`, `", array_keys($fields));
             $values = implode(", ", array_keys($params));
             if (!$this->query("INSERT INTO `{$table}` (`{$columns}`) VALUES({$values})", $params)->error()) {
-                return $this->_PDO->lastInsertId();
+                return($this->_PDO->lastInsertId());
             }
         }
         return false;
@@ -199,7 +199,7 @@ class Database {
      * @since 1.0.1
      */
     public function select($table, array $where = []) {
-        return $this->action('SELECT *', $table, $where);
+        return($this->action('SELECT *', $table, $where));
     }
 
     /**

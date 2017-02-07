@@ -40,7 +40,7 @@ class Cookie {
      * @since 1.0.1
      */
     public static function get($key) {
-        return $_COOKIE[$key];
+        return($_COOKIE[$key]);
     }
 
     /**

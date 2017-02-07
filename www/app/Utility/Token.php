@@ -24,7 +24,7 @@ class Token {
             Session::put("SESSION_TOKEN", md5(uniqid(rand(), true)));
             Session::put("SESSION_TOKEN_TIME", time());
         }
-        return Session::get("SESSION_TOKEN");
+        return(Session::get("SESSION_TOKEN"));
     }
 
     /**

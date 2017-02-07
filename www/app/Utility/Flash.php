@@ -24,7 +24,7 @@ class Flash {
             Session::delete($key);
             return $session;
         } else {
-            return Session::put($key, $value);
+            return(Session::put($key, $value));
         }
     }
 
@@ -36,7 +36,7 @@ class Flash {
      * @since 1.0.1
      */
     public static function danger($value = "") {
-        return self::message(Config::get("FLASH_DANGER"), $value);
+        return(self::message(Config::get("FLASH_DANGER"), $value));
     }
 
     /**
@@ -47,7 +47,7 @@ class Flash {
      * @since 1.0.1
      */
     public static function info($value = "") {
-        return self::message(Config::get("FLASH_INFO"), $value);
+        return(self::message(Config::get("FLASH_INFO"), $value));
     }
 
     /**
@@ -58,7 +58,7 @@ class Flash {
      * @since 1.0.1
      */
     public static function success($value = "") {
-        return self::message(Config::get("FLASH_SUCCESS"), $value);
+        return(self::message(Config::get("FLASH_SUCCESS"), $value));
     }
 
     /**
@@ -69,7 +69,7 @@ class Flash {
      * @since 1.0.1
      */
     public static function warning($value = "") {
-        return self::message(Config::get("FLASH_WARNING"), $value);
+        return(self::message(Config::get("FLASH_WARNING"), $value));
     }
 
 }
