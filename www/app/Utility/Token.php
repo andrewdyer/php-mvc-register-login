@@ -34,8 +34,8 @@ class Token {
      * @return boolean
      * @since 1.0.1
      */
-    public static function check($token) {
-        if (empty($token)) {
+    public static function check($token = "") {
+        if (!$token) {
             $token = Input::post("csrf_token");
         }
         return($token === Session::get("CSRF_TOKEN") and ! empty($token));
