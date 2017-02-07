@@ -17,15 +17,23 @@ class Text {
      * Get:
      * @access public
      * @param string $key
+     * @param array $data [optional]
      * @return string
      * @since 1.0.1
      */
-    public static function get($key) {
+    public static function get($key, array $data = []) {
         if (empty(self::$_texts)) {
             $texts = Config::get("TEXTS");
             self::$_texts = is_array($texts) ? $texts : [];
         }
-        return(array_key_exists($key, self::$_texts) ? self::$_texts[$key] : "");
+        if (array_key_exists($key, self::$_texts)) {
+            $text = self::$_texts[$key];
+            foreach ($data as $search => $replace) {
+                $text = str_replace($search, $replace, $text);
+            }
+            return $text;
+        }
+        return "";
     }
 
 }
