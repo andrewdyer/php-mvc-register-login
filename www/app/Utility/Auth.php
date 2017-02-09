@@ -20,7 +20,7 @@ class Auth {
      */
     public static function checkAuthenticated($redirect = "login") {
         Session::init();
-        if (!Session::get(Config::get("SESSION_USER"))) {
+        if (!Session::exists(Config::get("SESSION_USER"))) {
             Session::destroy();
             Redirect::to(APP_URL . $redirect);
         }
@@ -35,7 +35,7 @@ class Auth {
      */
     public static function checkUnauthenticated($redirect = "") {
         Session::init();
-        if (Session::get(Config::get("SESSION_USER"))) {
+        if (Session::exists(Config::get("SESSION_USER"))) {
             Redirect::to(APP_URL . $redirect);
         }
     }
