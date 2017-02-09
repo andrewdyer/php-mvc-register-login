@@ -16,7 +16,7 @@ class Flash {
      * @access public
      * @param string $key
      * @param string $value [optional]
-     * @return string 
+     * @return string|null
      * @since 1.0.1
      */
     public static function message($key, $value = "") {
@@ -24,9 +24,10 @@ class Flash {
             $session = Session::get($key);
             Session::delete($key);
             return $session;
-        } else {
+        } elseif (!empty($value)) {
             return(Session::put($key, $value));
         }
+        return null;
     }
 
     /**
