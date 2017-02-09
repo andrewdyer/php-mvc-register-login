@@ -174,6 +174,7 @@ class Database {
                 $this->_count = $this->_query->rowCount();
             } else {
                 $this->_error = true;
+                //die(print_r($this->_query->errorInfo()));
             }
         }
         return $this;
