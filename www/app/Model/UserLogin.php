@@ -26,7 +26,8 @@ class UserLogin {
     /**
      * Login: Validates the login form inputs, checks the user exists and that
      * the supplied password is correct - writing all necessary data into the
-     * session if the login was successful.
+     * session if the login was successful. Returns true if everything is okay,
+     * otherwise turns false.
      * @access public
      * @param string $email
      * @param string $password
@@ -67,7 +68,8 @@ class UserLogin {
     }
 
     /**
-     * Logout: Delete cookie and session.
+     * Logout: Delete cookie and session. Returns true if everything is okay,
+     * otherwise turns false.
      * @access public
      * @return boolean
      * @since 1.0.2

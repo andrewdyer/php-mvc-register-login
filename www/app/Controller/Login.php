@@ -71,7 +71,7 @@ class Login extends Core\Controller {
         Utility\Auth::checkAuthenticated();
 
         // Process the logout request, redirecting to the login controller if
-        // successful or to default controller if not.
+        // successful or to the default controller if not.
         if (Model\UserLogin::logout()) {
             Utility\Redirect::to(APP_URL . "login");
         }
