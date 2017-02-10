@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-offset-3 col-md-6">
+        <div class="col-md-offset-4 col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title text-center">Create a New Account</h3>
@@ -28,6 +28,7 @@
                             <input type="password" id="password-repeat-input" class="form-control" name="password_repeat" />
                         </div>
                         <button type="submit" class="btn btn-primary">Register</button>
+                        <a href="<?= $this->makeURL("login"); ?>" class="btn btn-link">Cancel</a>
                     </form>
                 </div>
             </div>

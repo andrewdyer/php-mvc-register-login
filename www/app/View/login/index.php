@@ -15,7 +15,8 @@
                             <label for="password-input">Password <span class="text-danger">*</span></label>
                             <input type="password" id="password-input" class="form-control" name="password" />
                         </div>
-                        <button type="submit" class="btn btn-block btn-primary">Sign In</button>
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                        <a href="<?= $this->makeURL("register"); ?>" class="btn btn-link">Register</a>
                     </form>
                 </div>
             </div>
