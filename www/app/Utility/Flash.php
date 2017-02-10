@@ -11,7 +11,7 @@ namespace App\Utility;
 class Flash {
 
     /**
-     * Message: Sets a session message or returns the value of a specific key of
+     * Session: Sets a session message or returns the value of a specific key of
      * the session.
      * @access public
      * @param string $key
@@ -19,7 +19,7 @@ class Flash {
      * @return string|null
      * @since 1.0.1
      */
-    public static function message($key, $value = "") {
+    public static function session($key, $value = "") {
         if (Session::exists($key)) {
             $session = Session::get($key);
             Session::delete($key);
@@ -39,7 +39,7 @@ class Flash {
      * @since 1.0.1
      */
     public static function danger($value = "") {
-        return(self::message(Config::get("FLASH_DANGER"), $value));
+        return(self::session(Config::get("FLASH_DANGER"), $value));
     }
 
     /**
@@ -51,7 +51,7 @@ class Flash {
      * @since 1.0.1
      */
     public static function info($value = "") {
-        return(self::message(Config::get("FLASH_INFO"), $value));
+        return(self::session(Config::get("FLASH_INFO"), $value));
     }
 
     /**
@@ -63,7 +63,7 @@ class Flash {
      * @since 1.0.1
      */
     public static function success($value = "") {
-        return(self::message(Config::get("FLASH_SUCCESS"), $value));
+        return(self::session(Config::get("FLASH_SUCCESS"), $value));
     }
 
     /**
@@ -75,7 +75,7 @@ class Flash {
      * @since 1.0.1
      */
     public static function warning($value = "") {
-        return(self::message(Config::get("FLASH_WARNING"), $value));
+        return(self::session(Config::get("FLASH_WARNING"), $value));
     }
 
 }
