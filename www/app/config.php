@@ -36,15 +36,13 @@ return [
         // 
         // Login Model Texts
         // =====================================================================
-        "LOGIN_INVALID_PASSWORD" => "",
-        "LOGIN_INVALID_INPUT" => "",
-        "LOGIN_USER_NOT_FOUND" => "",
+        "LOGIN_INVALID_PASSWORD" => "The email / password combination you have entered is incorrect",
+        "LOGIN_USER_NOT_FOUND" => "The email you have entered has not been found!",
         "" => "",
         // 
         // Register Model Texts
         // =====================================================================
-        "REGISTER_INVALID_INPUT" => "",
-        "REGISTER_USER_CREATED" => "",
+        "REGISTER_USER_CREATED" => "Your account has been successfully created!",
         "" => "",
         // 
         // User Model Texts
