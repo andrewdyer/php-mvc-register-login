@@ -8,9 +8,8 @@ define("ROOT", realpath(dirname(__FILE__) . "/../") . "/");
 // App Config
 define("APP_NAME", "myApp");
 define("APP_ROOT", ROOT . "app/");
-//define("APP_PROTOCOL", stripos($_SERVER["SERVER_PROTOCOL"], "https") === true ? "https://" : "http://");
-//define("APP_HTTP_HOST", $_SERVER["HTTP_HOST"]);
-define("APP_URL", "https://" . $_SERVER['HTTP_HOST'] . str_replace('public', '', dirname($_SERVER['SCRIPT_NAME'])));
+define("APP_PROTOCOL", stripos($_SERVER["SERVER_PROTOCOL"], "https") === true ? "https://" : "http://");
+define("APP_URL", APP_PROTOCOL . $_SERVER["HTTP_HOST"] . str_replace("public", "", dirname($_SERVER["SCRIPT_NAME"])) . "/");
 define("APP_CONFIG_FILE", APP_ROOT . "config.php");
 
 // Public Config
