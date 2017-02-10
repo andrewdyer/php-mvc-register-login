@@ -39,7 +39,6 @@ class UserLogin {
 
         // Validate the login form inputs.
         if (!Utility\Input::check($_POST, self::$_inputs)) {
-            Utility\Flash::info(Utility\Text::get("LOGIN_INVALID_INPUT"));
             return false;
         }
 
