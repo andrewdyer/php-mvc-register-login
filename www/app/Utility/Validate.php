@@ -12,13 +12,13 @@ class Validate {
 
     /** @var Database */
     private $_Db = null;
-    
+
     /** @var array */
     private $_errors = [];
-    
+
     /** @var boolean */
     private $_passed = false;
-    
+
     /** @var array */
     private $_source = [];
 
@@ -99,7 +99,7 @@ class Validate {
      */
     private function _validate($input, $value, array $rules) {
         foreach ($rules as $rule => $ruleValue) {
-            if ($rule === "required" and empty($value)) {
+            if (($rule === "required" and $ruleValue === true) and empty($value)) {
                 $this->_addError(Text::get("VALIDATE_REQUIRED_RULE", ["%ITEM%" => $input]));
             } elseif (!empty($value)) {
                 $methodName = lcfirst(ucwords(strtolower(str_replace(["-", "_"], "", $rule)))) . "Rule";
@@ -110,6 +110,29 @@ class Validate {
                     $this->_addError(Text::get("VALIDATE_MISSING_METHOD", ["%ITEM%" => $input]));
                 }
             }
+        }
+    }
+
+    /**
+     * Filter Rule:
+     * @access protected
+     * @param string $input
+     * @param string $value
+     * @param string $ruleValue
+     * @return void
+     * @since 1.0.2
+     */
+    protected function filterRule($input, $value, $ruleValue) {
+        switch ($ruleValue) {
+            // Email
+            case "email":
+                if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
+                    $this->_addError(Text::get("VALIDATE_FILTER_RULE", [
+                                "%ITEM%" => $input,
+                                "%RULE_VALUE%" => $ruleValue
+                    ]));
+                }
+                break;
         }
     }
 
@@ -125,8 +148,8 @@ class Validate {
     protected function matchesRule($input, $value, $ruleValue) {
         if ($value != $this->_source[$ruleValue]) {
             $this->_addError(Text::get("VALIDATE_MATCHES_RULE", [
-                "%ITEM%" => $input,
-                "%RULE_VALUE%" => $ruleValue
+                        "%ITEM%" => $input,
+                        "%RULE_VALUE%" => $ruleValue
             ]));
         }
     }
@@ -143,8 +166,8 @@ class Validate {
     protected function maxCharactersRule($input, $value, $ruleValue) {
         if (strlen($value) > $ruleValue) {
             $this->_addError(Text::get("VALIDATE_MAX_CHARACTERS_RULE", [
-                "%ITEM%" => $input,
-                "%RULE_VALUE%" => $ruleValue
+                        "%ITEM%" => $input,
+                        "%RULE_VALUE%" => $ruleValue
             ]));
         }
     }
@@ -161,8 +184,8 @@ class Validate {
     protected function minCharactersRule($input, $value, $ruleValue) {
         if (strlen($value) < $ruleValue) {
             $this->_addError(Text::get("VALIDATE_MIN_CHARACTERS_RULE", [
-                "%ITEM%" => $input,
-                "%RULE_VALUE%" => $ruleValue
+                        "%ITEM%" => $input,
+                        "%RULE_VALUE%" => $ruleValue
             ]));
         }
     }
@@ -177,9 +200,9 @@ class Validate {
      * @since 1.0.2
      */
     protected function requiredRule($input, $value, $ruleValue) {
-        if (empty($value)) {
+        if ($ruleValue === true and empty($value)) {
             $this->_addError(Text::get("VALIDATE_REQUIRED_RULE", [
-                "%ITEM%" => $input
+                        "%ITEM%" => $input
             ]));
         }
     }
@@ -197,7 +220,7 @@ class Validate {
         $check = $this->_Db->select($ruleValue, [$input, "=", $value]);
         if ($check->count()) {
             $this->_addError(Text::get("VALIDATE_UNIQUE_RULE", [
-                "%ITEM%" => $input
+                        "%ITEM%" => $input
             ]));
         }
     }

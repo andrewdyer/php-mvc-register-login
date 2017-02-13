@@ -22,6 +22,7 @@ class UserRegister {
             "required" => true
         ],
         "email" => [
+            "filter" => "email",
             "required" => true,
             "unique" => "users"
         ],

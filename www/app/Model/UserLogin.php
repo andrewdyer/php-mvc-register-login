@@ -16,6 +16,7 @@ class UserLogin {
     /** @var array The login form inputs. */
     private static $_inputs = [
         "email" => [
+            "filter" => "email",
             "required" => true
         ],
         "password" => [
