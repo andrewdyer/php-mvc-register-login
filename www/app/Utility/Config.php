@@ -21,7 +21,7 @@ class Config {
      * @return mixed
      * @since 1.0.1
      */
-    public function get($key) {
+    public static function get($key) {
         if (empty(self::$_config)) {
             self::$_config = require_once APP_CONFIG_FILE;
         }
