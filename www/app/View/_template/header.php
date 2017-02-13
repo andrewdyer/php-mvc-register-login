@@ -1,3 +1,8 @@
+<?php
+
+use App\Utility\Config;
+use App\Utility\Flash;
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,3 +36,36 @@
                 <div id="header"></div>
                 <!-- /#header -->
                 <div id="content">
+                    <div id="feedback" class="container">
+                        <?php if (($danger = Flash::danger())): ?>
+                            <div class="alert alert-danger" role="alert"><strong>Oh snap!</strong> <?= $this->escapeHTML($danger); ?></div>
+                            <?php
+                        endif;
+                        if (($info = Flash::info())):
+                            ?>
+                            <div class="alert alert-info" role="alert"><strong>Heads up!</strong> <?= $this->escapeHTML($info); ?></div>
+                            <?php
+                        endif;
+                        if (($success = Flash::success())):
+                            ?>
+                            <div class="alert alert-success" role="alert"><strong>Success!</strong> <?= $this->escapeHTML($success); ?></div>
+                            <?php
+                        endif;
+                        if (($warning = Flash::warning())):
+                            ?>
+                            <div class="alert alert-warning" role="alert"><strong>Warning!</strong> <?= $this->escapeHTML($warning); ?></div>
+                            <?php
+                        endif;
+                        if (($errors = Flash::session(Config::get("SESSION_ERRORS")))):
+                            ?>
+                            <div class="alert alert-danger" role="alert">
+                                <h4>Errors:</h4>
+                                <ul>
+                                    <?php foreach ($errors as $error): ?>
+                                        <li><?= $this->escapeHTML($error); ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+

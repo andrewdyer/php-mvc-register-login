@@ -26,7 +26,7 @@ class Database {
     private $_error = false;
 
     /** @var array */
-    private $_results = null;
+    private $_results = [];
 
     /** @var integer */
     private $_count = 0;
@@ -164,7 +164,9 @@ class Database {
      * @since 1.0.1
      */
     public function query($sql, array $params = []) {
+        $this->_count = 0;
         $this->_error = false;
+        $this->_results = [];
         if (($this->_query = $this->_PDO->prepare($sql))) {
             foreach ($params as $key => $value) {
                 $this->_query->bindValue($key, $value);
@@ -174,6 +176,7 @@ class Database {
                 $this->_count = $this->_query->rowCount();
             } else {
                 $this->_error = true;
+                //die(print_r($this->_query->errorInfo()));
             }
         }
         return $this;
