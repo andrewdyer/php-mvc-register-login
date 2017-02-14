@@ -60,7 +60,7 @@ class UserLogin {
      * @access public
      * @param string $email
      * @param string $password
-     * @param boolean $remember
+     * @param boolean $remember [optional]
      * @return boolean
      * @since 1.0.2
      * @throws Exception
