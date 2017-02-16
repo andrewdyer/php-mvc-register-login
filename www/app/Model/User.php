@@ -14,9 +14,6 @@ use App\Utility;
  */
 class User extends Core\Model {
 
-    /** @var array The user's record from the database */
-    private $_data = [];
-
     /**
      * Construct:
      * @access public
@@ -25,44 +22,23 @@ class User extends Core\Model {
      */
     public function __construct($user = null) {
         parent::__construct();
-        $this->find($user);
+        $this->findUser($user);
     }
 
     /**
-     * Create: Inserts a new user into the database, returning the unique user
-     * if successful.
+     * Create User: Inserts a new user into the database, returning the unique
+     * user if successful, otherwise returns false.
      * @access public
      * @param array $fields
      * @return string|boolean
-     * @since 1.0.2
+     * @since 1.0.3
      * @throws Exception
      */
-    public function create(array $fields) {
-        if (!$userID = $this->Db->insert("users", $fields)) {
+    public function createUser(array $fields) {
+        if (!$userID = parent::create("users", $fields)) {
             throw new Exception(Utility\Text::get("USER_CREATE_EXCEPTION"));
         }
         return $userID;
-    }
-
-    /**
-     * Data: Returns the user's record from the database.
-     * @access public
-     * @return array
-     * @since 1.0.2
-     */
-    public function data() {
-        return($this->_data);
-    }
-
-    /**
-     * Exists: Returns true if the user's record has been pulled from the
-     * database and stored in a class property, or false if not.
-     * @access public
-     * @return boolean
-     * @since 1.0.2
-     */
-    public function exists() {
-        return(!empty($this->_data));
     }
 
     /**
@@ -83,39 +59,30 @@ class User extends Core\Model {
     }
 
     /**
-     * Find: Retrieves and stores a specified user record from the database into
-     * a class property. Returns true if the record was found, or false if not.
+     * Find User: Retrieves and stores a specified user record from the database
+     * into a class property. Returns true if the record was found, or false if
+     * not.
      * @access public
      * @param string $user
      * @return boolean
-     * @since 1.0.2
+     * @since 1.0.3
      */
-    public function find($user) {
-        if ($user) {
-            $field = filter_var($user, FILTER_VALIDATE_EMAIL) ? "email" : "id";
-            $data = $this->Db->select("users", [$field, "=", $user]);
-            if ($data->count()) {
-                $this->_data = $data->first();
-                return true;
-            }
-        }
-        return false;
+    public function findUser($user) {
+        $field = filter_var($user, FILTER_VALIDATE_EMAIL) ? "email" : "id";
+        return(parent::find("users", [$field, "=", $user]));
     }
 
     /**
-     * Update: Updates a specified user record in the database.
+     * Update User: Updates a specified user record in the database.
      * @access public
      * @param array $fields
      * @param integer $userID [optional]
      * @return void
-     * @since 1.0.2
+     * @since 1.0.3
      * @throws Exception
      */
-    public function update(array $fields, $userID = null) {
-        if (!$userID) {
-            $userID = $this->data()->id;
-        }
-        if (!$this->Db->update("users", $userID, $fields)) {
+    public function updateUser(array $fields, $userID = null) {
+        if (!parent::update("users", $fields, $userID)) {
             throw new Exception(Utility\Text::get("USER_UPDATE_EXCEPTION"));
         }
     }
