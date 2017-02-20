@@ -48,10 +48,32 @@ class Login extends Core\Controller {
 
         $email = Utility\Input::post("email");
         $password = Utility\Input::post("password");
+        $remember = Utility\Input::post("remember") === "on";
 
         // Process the login request, redirecting to the home controller if
         // successful or back to the login controller if not.
-        if (Model\UserLogin::login($email, $password)) {
+        if (Model\UserLogin::login($email, $password, $remember)) {
+            Utility\Redirect::to(APP_URL);
+        }
+        Utility\Redirect::to(APP_URL . "login");
+    }
+
+    /**
+     * Login With Cookie: Processes a login with cookie request. NOTE: This
+     * controller can only be accessed by unauthenticated users!
+     * @access public
+     * @example login/_loginWithCookie
+     * @return void
+     * @since 1.0.3
+     */
+    public function _loginWithCookie() {
+
+        // Check that the user is unauthenticated.
+        Utility\Auth::checkUnauthenticated();
+
+        // Process the login with cookie request, redirecting to the home
+        // controller if successful or back to the login controller if not.
+        if (Model\UserLogin::loginWithCookie()) {
             Utility\Redirect::to(APP_URL);
         }
         Utility\Redirect::to(APP_URL . "login");

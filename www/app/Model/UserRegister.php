@@ -22,6 +22,7 @@ class UserRegister {
             "required" => true
         ],
         "email" => [
+            "filter" => "email",
             "required" => true,
             "unique" => "users"
         ],
@@ -59,7 +60,7 @@ class UserRegister {
             // Insert the new user record into the database, storing the unique
             // ID which will be returned on success.
             $User = new User;
-            $userID = $User->create([
+            $userID = $User->createUser([
                 "email" => Utility\Input::post("email"),
                 "forename" => Utility\Input::post("forename"),
                 "password" => Utility\Hash::generate(Utility\Input::post("password"), $salt),

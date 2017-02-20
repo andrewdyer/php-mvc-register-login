@@ -11,6 +11,7 @@ return [
     // 
     // Cookie Config
     // =========================================================================
+    "COOKIE_DEFAULT_EXPIRY" => 604800,
     "COOKIE_USER" => "user",
     "" => "",
     // 
@@ -53,6 +54,7 @@ return [
         // 
         // Validate Utility Texts
         // =====================================================================
+        "VALIDATE_FILTER_RULE" => "%ITEM% is not a valid %RULE_VALUE%!",
         "VALIDATE_MISSING_METHOD" => "Unable to validate %ITEM%!",
         "VALIDATE_MATCHES_RULE" => "%RULE_VALUE% must match %ITEM%.",
         "VALIDATE_MAX_CHARACTERS_RULE" => "%ITEM% can only be a maximum of %RULE_VALUE% characters.",
