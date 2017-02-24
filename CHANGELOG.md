@@ -1,6 +1,13 @@
 # Change Log
 
-## 1.0.3 (Released: TBC)
+## 1.0.4 (Released: TBC)
+* Added CSRF token checking;
+* Updated the project README.md;
+* Updated Utility/Token to read from the config file;
+* Updated Utility/Validate error system and made it so a unique record can be defined for use in the unique record checking rule;
+* Fixed some minor logic bugs;
+
+## 1.0.3 (Released: 20/02/2017)
 * Added functionality for the user to set a remember me cookie;
 * Automatically login a user if a remember me cookie has been set and they are unauthenticated;
 * Renamed the database SQL files, added the order in which they need to be executed to the filename;

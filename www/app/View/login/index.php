@@ -20,6 +20,7 @@
                                 <input type="checkbox" id="remember" name="remember" /> Remember me
                             </label>
                         </div>
+                        <input type="hidden" name="csrf_token" value="<?php echo App\Utility\Token::generate(); ?>" />
                         <button type="submit" class="btn btn-primary">Sign In</button>
                         <a href="<?= $this->makeURL("register"); ?>" class="btn btn-link">Register</a>
                     </form>

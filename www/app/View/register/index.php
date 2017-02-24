@@ -27,6 +27,7 @@
                             <label for="password-repeat-input">Password (Repeat) <span class="text-danger">*</span></label>
                             <input type="password" id="password-repeat-input" class="form-control" name="password_repeat" />
                         </div>
+                        <input type="hidden" name="csrf_token" value="<?php echo App\Utility\Token::generate(); ?>" />
                         <button type="submit" class="btn btn-primary">Register</button>
                         <a href="<?= $this->makeURL("login"); ?>" class="btn btn-link">Cancel</a>
                     </form>
