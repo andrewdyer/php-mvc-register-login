@@ -1,7 +1,8 @@
 # Change Log
 
-## 1.0.4 (Released: TBC)
+## 1.0.4 (Released: 28/02/2017)
 * Added CSRF token checking;
+* Added user profiles;
 * Updated the project README.md;
 * Updated Utility/Token to read from the config file;
 * Updated Utility/Validate error system and made it so a unique record can be defined for use in the unique record checking rule;
