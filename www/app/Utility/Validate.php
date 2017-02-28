@@ -19,6 +19,9 @@ class Validate {
     /** @var boolean */
     private $_passed = false;
 
+    /** @var integer */
+    private $_recordID = null;
+
     /** @var array */
     private $_source = [];
 
@@ -26,21 +29,24 @@ class Validate {
      * Construct:
      * @access public
      * @param array $source
+     * @param integer $recordID [optional]
      * @since 1.0.2
      */
-    public function __construct(array $source) {
+    public function __construct(array $source, $recordID = null) {
         $this->_Db = Database::getInstance();
+        $this->_recordID = $recordID;
         $this->_source = $source;
     }
 
     /**
      * Add Error:
      * @access private
+     * @param string $input
      * @param string $error
      * @since 1.0.2
      */
-    private function _addError($error) {
-        $this->_errors[] = str_replace(['-', '_'], ' ', ucfirst(strtolower($error)));
+    private function _addError($input, $error) {
+        $this->_errors[$input][] = str_replace(['-', '_'], ' ', ucfirst(strtolower($error)));
     }
 
     /**
@@ -58,8 +64,7 @@ class Validate {
                 $value = trim($this->_source[$input]);
                 $this->_validate($input, $value, $rules);
             } else {
-                // item not in source
-                $this->_addError("");
+                $this->_addError($input, Text::get("VALIDATE_MISSING_INPUT", ["%ITEM%" => $input]));
             }
         }
         if (empty($this->_errors)) {
@@ -100,14 +105,13 @@ class Validate {
     private function _validate($input, $value, array $rules) {
         foreach ($rules as $rule => $ruleValue) {
             if (($rule === "required" and $ruleValue === true) and empty($value)) {
-                $this->_addError(Text::get("VALIDATE_REQUIRED_RULE", ["%ITEM%" => $input]));
+                $this->_addError($input, Text::get("VALIDATE_REQUIRED_RULE", ["%ITEM%" => $input]));
             } elseif (!empty($value)) {
                 $methodName = lcfirst(ucwords(strtolower(str_replace(["-", "_"], "", $rule)))) . "Rule";
                 if (method_exists($this, $methodName)) {
                     $this->{$methodName}($input, $value, $ruleValue);
                 } else {
-                    // method doesnt exist
-                    $this->_addError(Text::get("VALIDATE_MISSING_METHOD", ["%ITEM%" => $input]));
+                    $this->_addError($input, Text::get("VALIDATE_MISSING_METHOD", ["%ITEM%" => $input]));
                 }
             }
         }
@@ -127,10 +131,11 @@ class Validate {
             // Email
             case "email":
                 if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-                    $this->_addError(Text::get("VALIDATE_FILTER_RULE", [
-                                "%ITEM%" => $input,
-                                "%RULE_VALUE%" => $ruleValue
-                    ]));
+                    $data = [
+                        "%ITEM%" => $input,
+                        "%RULE_VALUE%" => $ruleValue
+                    ];
+                    $this->_addError($input, Text::get("VALIDATE_FILTER_RULE", $data));
                 }
                 break;
         }
@@ -147,10 +152,11 @@ class Validate {
      */
     protected function matchesRule($input, $value, $ruleValue) {
         if ($value != $this->_source[$ruleValue]) {
-            $this->_addError(Text::get("VALIDATE_MATCHES_RULE", [
-                        "%ITEM%" => $input,
-                        "%RULE_VALUE%" => $ruleValue
-            ]));
+            $data = [
+                "%ITEM%" => $input,
+                "%RULE_VALUE%" => $ruleValue
+            ];
+            $this->_addError($input, Text::get("VALIDATE_MATCHES_RULE", $data));
         }
     }
 
@@ -165,10 +171,11 @@ class Validate {
      */
     protected function maxCharactersRule($input, $value, $ruleValue) {
         if (strlen($value) > $ruleValue) {
-            $this->_addError(Text::get("VALIDATE_MAX_CHARACTERS_RULE", [
-                        "%ITEM%" => $input,
-                        "%RULE_VALUE%" => $ruleValue
-            ]));
+            $data = [
+                "%ITEM%" => $input,
+                "%RULE_VALUE%" => $ruleValue
+            ];
+            $this->_addError($input, Text::get("VALIDATE_MAX_CHARACTERS_RULE", $data));
         }
     }
 
@@ -183,10 +190,11 @@ class Validate {
      */
     protected function minCharactersRule($input, $value, $ruleValue) {
         if (strlen($value) < $ruleValue) {
-            $this->_addError(Text::get("VALIDATE_MIN_CHARACTERS_RULE", [
-                        "%ITEM%" => $input,
-                        "%RULE_VALUE%" => $ruleValue
-            ]));
+            $data = [
+                "%ITEM%" => $input,
+                "%RULE_VALUE%" => $ruleValue
+            ];
+            $this->_addError($input, Text::get("VALIDATE_MIN_CHARACTERS_RULE", $data));
         }
     }
 
@@ -201,9 +209,7 @@ class Validate {
      */
     protected function requiredRule($input, $value, $ruleValue) {
         if ($ruleValue === true and empty($value)) {
-            $this->_addError(Text::get("VALIDATE_REQUIRED_RULE", [
-                        "%ITEM%" => $input
-            ]));
+            $this->_addError($input, Text::get("VALIDATE_REQUIRED_RULE", ["%ITEM%" => $input]));
         }
     }
 
@@ -219,9 +225,10 @@ class Validate {
     protected function uniqueRule($input, $value, $ruleValue) {
         $check = $this->_Db->select($ruleValue, [$input, "=", $value]);
         if ($check->count()) {
-            $this->_addError(Text::get("VALIDATE_UNIQUE_RULE", [
-                        "%ITEM%" => $input
-            ]));
+            if ($this->_recordID and $check->first()->id === $this->_recordID) {
+                return;
+            }
+            $this->_addError($input, Text::get("VALIDATE_UNIQUE_RULE", ["%ITEM%" => $input]));
         }
     }
 

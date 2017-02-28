@@ -17,11 +17,19 @@ class Input {
      * @access public
      * @param array $source
      * @param array $inputs
+     * @param integer $recordID [optional]
      * @return boolean
      * @since 1.0.2
      */
-    public static function check(array $source, array $inputs) {
-        $Validate = new Validate($source);
+    public static function check(array $source, array $inputs, $recordID = null) {
+        if (!Input::exists()) {
+            return false;
+        }
+        if (!isset($source["csrf_token"]) and ! Token::check($source["csrf_token"])) {
+            Flash::danger(Text::get("INPUT_INCORRECT_CSRF_TOKEN"));
+            return false;
+        }
+        $Validate = new Validate($source, $recordID);
         $validation = $Validate->check($inputs);
         if (!$validation->passed()) {
             Session::put(Config::get("SESSION_ERRORS"), $validation->errors());

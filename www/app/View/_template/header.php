@@ -61,8 +61,10 @@ use App\Utility\Flash;
                             <div class="alert alert-danger" role="alert">
                                 <h4>Errors:</h4>
                                 <ul>
-                                    <?php foreach ($errors as $error): ?>
-                                        <li><?= $this->escapeHTML($error); ?></li>
+                                    <?php foreach ($errors as $key => $values): ?>
+                                        <?php foreach ($values as $value): ?>
+                                            <li><?= $this->escapeHTML($value); ?></li>
+                                        <?php endforeach; ?>
                                     <?php endforeach; ?>
                                 </ul>
                             </div>

@@ -68,7 +68,7 @@ class User extends Core\Model {
      * @since 1.0.3
      */
     public function findUser($user) {
-        $field = filter_var($user, FILTER_VALIDATE_EMAIL) ? "email" : "id";
+        $field = filter_var($user, FILTER_VALIDATE_EMAIL) ? "email" : (is_numeric($user) ? "id" : "username");
         return(parent::find("users", [$field, "=", $user]));
     }
 
