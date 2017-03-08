@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.0.5 (Released: TBC)
+* Updated the login script, moving the email, password and remember from the controller into the model method;
+
 ## 1.0.4 (Released: 28/02/2017)
 * Added CSRF token checking;
 * Added user profiles;

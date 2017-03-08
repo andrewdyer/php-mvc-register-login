@@ -46,13 +46,9 @@ class Login extends Core\Controller {
         // Check that the user is unauthenticated.
         Utility\Auth::checkUnauthenticated();
 
-        $email = Utility\Input::post("email");
-        $password = Utility\Input::post("password");
-        $remember = Utility\Input::post("remember") === "on";
-
         // Process the login request, redirecting to the home controller if
         // successful or back to the login controller if not.
-        if (Model\UserLogin::login($email, $password, $remember)) {
+        if (Model\UserLogin::login()) {
             Utility\Redirect::to(APP_URL);
         }
         Utility\Redirect::to(APP_URL . "login");
