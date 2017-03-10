@@ -2,6 +2,7 @@
 
 ## 1.0.5 (Released: TBC)
 * Updated the login script, moving the email, password and remember from the controller into the model method;
+* Updated Utility/Session::get to check if the session key exists;
 
 ## 1.0.4 (Released: 28/02/2017)
 * Added CSRF token checking;
