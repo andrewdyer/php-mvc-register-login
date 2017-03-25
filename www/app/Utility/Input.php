@@ -57,25 +57,29 @@ class Input {
     }
 
     /**
-     * Get: Returns the value of a specific key of the GET super-global.
+     * Get: Returns the value of a specific key of the GET super-global, or a
+     * default value if the variable is not set / is NULL.
      * @access public
      * @param string $key
-     * @return string
+     * @param mixed $default
+     * @return mixed
      * @since 1.0.1
      */
-    public static function get($key) {
-        return(isset($_GET[$key]) ? $_GET[$key] : "");
+    public static function get($key, $default = "") {
+        return(isset($_GET[$key]) ? $_GET[$key] : $default);
     }
 
     /**
-     * Post: Returns the value of a specific key of the POST super-global.
+     * Post: Returns the value of a specific key of the POST super-global, or a
+     * default value if the variable is not set / is NULL.
      * @access public
      * @param string $key
-     * @return string
+     * @param mixed $default
+     * @return mixed
      * @since 1.0.1
      */
-    public static function post($key) {
-        return(isset($_POST[$key]) ? $_POST[$key] : "");
+    public static function post($key, $default = "") {
+        return(isset($_POST[$key]) ? $_POST[$key] : $default);
     }
 
 }
