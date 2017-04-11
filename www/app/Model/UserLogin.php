@@ -58,14 +58,11 @@ class UserLogin {
      * session if the login was successful. Returns true if everything is okay,
      * otherwise turns false.
      * @access public
-     * @param string $email
-     * @param string $password
-     * @param boolean $remember [optional]
      * @return boolean
      * @since 1.0.2
      * @throws Exception
      */
-    public static function login($email, $password, $remember = false) {
+    public static function login() {
 
         // Validate the login form inputs.
         if (!Utility\Input::check($_POST, self::$_inputs)) {
@@ -73,6 +70,7 @@ class UserLogin {
         }
 
         // Check if the user exists.
+        $email = Utility\Input::post("email");
         if (!$User = User::getInstance($email)) {
             Utility\Flash::info(Utility\Text::get("LOGIN_USER_NOT_FOUND"));
             return false;
@@ -82,12 +80,14 @@ class UserLogin {
 
             // Check if the provided password fits the hashed password in the
             // database.
+            $password = Utility\Input::post("password");
             if (Utility\Hash::generate($password, $data->salt) !== $data->password) {
                 throw new Exception(Utility\Text::get("LOGIN_INVALID_PASSWORD"));
             }
 
             // Create a remember me cookie if the user has selected the option
             // to remained logged in on the login form.
+            $remember = Utility\Input::post("remember") === "on";
             if ($remember and ! self::createRememberCookie($data->id)) {
                 //throw new Exception();
             }
