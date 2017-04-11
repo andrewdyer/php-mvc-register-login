@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.0.5 (Released: TBC)
+* Rewrite of Core/App;
+
 ## 1.0.5 (Released: 11/04/2017)
 * Added presenters;
 * Updated Utility/Redirect to handle 404 errors;
