@@ -30,7 +30,7 @@ class App {
      */
     public function __construct() {
         try {
-            $this->_parseUrl();
+            $this->_parseURL();
             $this->_getClass();
             $this->_getMethod();
             $this->_getParams();
