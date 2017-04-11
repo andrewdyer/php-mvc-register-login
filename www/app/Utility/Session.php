@@ -47,14 +47,16 @@ class Session {
     }
 
     /**
-     * Get: Returns the value of a specific key of the session.
+     * Get: Returns the value of a specific key of the session if it exists.
      * @access public
      * @param string $key
-     * @return string
+     * @return string|nothing
      * @since 1.0.1
      */
     public static function get($key) {
-        return($_SESSION[$key]);
+        if (self::exists($key)) {
+            return($_SESSION[$key]);
+        }
     }
 
     /**

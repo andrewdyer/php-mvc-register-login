@@ -19,7 +19,12 @@ class Redirect {
      */
     public static function to($location = "") {
         if ($location) {
-            header("Location: " . $location);
+            if ($location === 404) {
+                header('HTTP/1.0 404 Not Found');
+                include VIEW_PATH . "_template/404.php";
+            } else {
+                header("Location: " . $location);
+            }
             exit();
         }
     }

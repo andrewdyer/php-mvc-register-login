@@ -20,6 +20,9 @@ define("CONTROLLER_PATH", "\App\Controller\\");
 define("DEFAULT_CONTROLLER", CONTROLLER_PATH . "Index");
 define("DEFAULT_CONTROLLER_ACTION", "index");
 
+// Presenter Config
+define("DEFAULT_PRESENTER", "format");
+
 // View Config
 define("VIEW_PATH", "../app/View/");
 define("DEFAULT_HEADER_PATH", "_template/header");

@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.0.5 (Released: 11/04/2017)
+* Added presenters;
+* Updated Utility/Redirect to handle 404 errors;
+* Updated the login script, moving the email, password and remember from the controller into the model method;
+* Updated Utility/Session::get to check if the session key exists;
+* Added a basic Error 404 template;
+
 ## 1.0.4 (Released: 28/02/2017)
 * Added CSRF token checking;
 * Added user profiles;

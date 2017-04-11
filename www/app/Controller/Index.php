@@ -22,6 +22,9 @@ class Index extends Core\Controller {
      * @since 1.0
      */
     public function index() {
+        
+
+        Utility\Redirect::to(404);
 
         // Check that the user is authenticated.
         Utility\Auth::checkAuthenticated();
