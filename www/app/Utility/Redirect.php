@@ -3,7 +3,7 @@
 namespace App\Utility;
 
 /**
- * Description of Redirect
+ * Redirect:
  *
  * @author Andrew Dyer <andrewdyer@outlook.com>
  * @since 1.0.1

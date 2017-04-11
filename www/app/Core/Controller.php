@@ -42,37 +42,4 @@ class Controller {
         $this->View = new View;
     }
 
-    /**
-     * JSON Response: Outputs a JSON encoded string.
-     * @access protected
-     * @param mixed $data
-     * @param integer $status [optional]
-     * @return void
-     * @since 1.0.3
-     */
-    protected function JSONresponse($data, $status = 200) {
-        
-        // Cast the value of $data to type array if it is not already.
-        if (!is_array($data)) {
-            $data = (array) $data;
-        }
-        $statuses = [
-            200 => "OK",
-            403 => "Forbidden",
-            400 => "Bad Request",
-            404 => "Not Found",
-            405 => "Method Not Allowed",
-            500 => "Internal Server Error"
-        ];
-        
-        // Set the headers.
-        header("Access-Control-Allow-Orgin: *");
-        header("Access-Control-Allow-Methods: *");
-        header("HTTP/1.1 {$status} " . ($statuses[$status] ? $statuses[$status] : $statuses[500]));
-        header("Content-Type: application/json");
-        
-        // We return a JSON encoded string and kill the script here.
-        die(json_encode($data));
-    }
-
 }

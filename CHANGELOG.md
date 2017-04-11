@@ -2,6 +2,8 @@
 
 ## 1.0.5 (Released: TBC)
 * Rewrite of Core/App;
+* Removed the JSONresponse method from Core/Controller;
+* Added a new response utility to set headers and output JSON;
 
 ## 1.0.5 (Released: 11/04/2017)
 * Added presenters;
