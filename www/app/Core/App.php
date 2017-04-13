@@ -107,7 +107,7 @@ class App {
     }
 
     /**
-     * Process App: Calls the API class and method with parameters.
+     * Process App: Calls the controller class and method with parameters.
      * @access private
      * @return void
      * @since 1.0.6
