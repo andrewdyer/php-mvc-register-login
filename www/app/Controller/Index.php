@@ -22,14 +22,11 @@ class Index extends Core\Controller {
      * @since 1.0
      */
     public function index() {
-        
-
-        Utility\Redirect::to(404);
 
         // Check that the user is authenticated.
         Utility\Auth::checkAuthenticated();
 
-        // Get an instance of the user model using the ID stored in the session.
+        // Get an instance of the user model using the ID stored in the session. 
         $userID = Utility\Session::get(Utility\Config::get("SESSION_USER"));
         if (!$User = Model\User::getInstance($userID)) {
             Utility\Redirect::to(APP_URL);

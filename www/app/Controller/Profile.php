@@ -47,7 +47,7 @@ class Profile extends Core\Controller {
         // Set any dependencies, data and render the view.
         $this->View->render("profile/index", [
             "title" => "Profile",
-            "data" => (new Presenter\User($User->data()))->present("profile")
+            "data" => (new Presenter\Profile($User->data()))->present()
         ]);
     }
 

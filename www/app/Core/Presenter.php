@@ -26,15 +26,11 @@ class Presenter {
     /**
      * Present:
      * @access public
-     * @param string $format [optional]
      * @return string
      * @since 1.0.5
      */
-    public function present($format = "") {
-        $method = $format ? : DEFAULT_PRESENTER;
-        if (method_exists($this, $method)) {
-            return((Object) ($this->{$method}()));
-        }
+    public function present() {
+        return((Object) $this->format());
     }
 
 }

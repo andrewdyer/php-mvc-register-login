@@ -5,20 +5,20 @@ namespace App\Presenter;
 use App\Core;
 
 /**
- * User Presenter:
+ * Profile Presenter:
  *
  * @author Andrew Dyer <andrewdyer@outlook.com>
- * @since 1.0.5
+ * @since 1.0.6
  */
-class User extends Core\Presenter {
+class Profile extends Core\Presenter {
 
     /**
-     * Profile:
+     * Format:
      * @access public
      * @return array
-     * @since 1.0.5
+     * @since 1.0.6
      */
-    public function profile() {
+    public function format() {
         return [
             "name" => $this->data->forename . " " . $this->data->surname,
             "username" => $this->data->username
