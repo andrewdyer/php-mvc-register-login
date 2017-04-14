@@ -6,6 +6,7 @@
 * Added a new response utility to set headers and output JSON;
 * Updated Core/Presenter;
 * Renamed Presenter/User to Presenter/Profile;
+* Updated the flash settings in the config file;
 
 ## 1.0.5 (Released: 11/04/2017)
 * Added presenters;

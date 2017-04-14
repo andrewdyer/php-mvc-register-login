@@ -15,17 +15,13 @@ return [
     "COOKIE_USER" => "user",
     "" => "",
     // 
-    // Flash Config
-    // =========================================================================
-    "FLASH_DANGER" => "flash_danger",
-    "FLASH_INFO" => "flash_info",
-    "FLASH_SUCCESS" => "flash_success",
-    "FLASH_WARNING" => "flash_warning",
-    "" => "",
-    // 
     // Session Config
     // =========================================================================
     "SESSION_ERRORS" => "errors",
+    "SESSION_FLASH_DANGER" => "flash_danger",
+    "SESSION_FLASH_INFO" => "flash_info",
+    "SESSION_FLASH_SUCCESS" => "flash_success",
+    "SESSION_FLASH_WARNING" => "flash_warning",
     "SESSION_TOKEN" => "token",
     "SESSION_TOKEN_TIME" => "token_time",
     "SESSION_USER" => "user",

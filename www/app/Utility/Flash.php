@@ -31,7 +31,7 @@ class Flash {
     }
 
     /**
-     * Danger: Sets a message or returns the value of the FLASH_DANGER key of
+     * Danger: Sets a message or returns the value of the SESSION_FLASH_DANGER key of
      * the session.
      * @access public
      * @param string $value [optional]
@@ -39,11 +39,11 @@ class Flash {
      * @since 1.0.1
      */
     public static function danger($value = "") {
-        return(self::session(Config::get("FLASH_DANGER"), $value));
+        return(self::session(Config::get("SESSION_FLASH_DANGER"), $value));
     }
 
     /**
-     * Info: Sets a message or returns the value of the FLASH_INFO key of the
+     * Info: Sets a message or returns the value of the SESSION_FLASH_INFO key of the
      * session.
      * @access public
      * @param string $value [optional]
@@ -51,11 +51,11 @@ class Flash {
      * @since 1.0.1
      */
     public static function info($value = "") {
-        return(self::session(Config::get("FLASH_INFO"), $value));
+        return(self::session(Config::get("SESSION_FLASH_INFO"), $value));
     }
 
     /**
-     * Success: Sets a message or returns the value of the FLASH_SUCCESS key of
+     * Success: Sets a message or returns the value of the SESSION_FLASH_SUCCESS key of
      * the session.
      * @access public
      * @param string $value [optional]
@@ -63,11 +63,11 @@ class Flash {
      * @since 1.0.1
      */
     public static function success($value = "") {
-        return(self::session(Config::get("FLASH_SUCCESS"), $value));
+        return(self::session(Config::get("SESSION_FLASH_SUCCESS"), $value));
     }
 
     /**
-     * Warning: Sets a message or returns the value of the FLASH_WARNING key of
+     * Warning: Sets a message or returns the value of the SESSION_FLASH_WARNING key of
      * the session.
      * @access public
      * @param string $value [optional]
@@ -75,7 +75,7 @@ class Flash {
      * @since 1.0.1
      */
     public static function warning($value = "") {
-        return(self::session(Config::get("FLASH_WARNING"), $value));
+        return(self::session(Config::get("SESSION_FLASH_WARNING"), $value));
     }
 
 }
