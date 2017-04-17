@@ -20,7 +20,7 @@ class Profile extends Core\Controller {
      * accessed by unauthenticated users!
      * @access public
      * @example profile/index/{$1}
-     * @param string $user
+     * @param string $user [optional]
      * @return void
      * @since 1.0.4
      */

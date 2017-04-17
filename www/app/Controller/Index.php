@@ -15,7 +15,8 @@ use App\Utility;
 class Index extends Core\Controller {
 
     /**
-     * Index:
+     * Index: Renders the index view. NOTE: This controller can only be accessed
+     * by authenticated users!
      * @access public
      * @example index/index
      * @return void

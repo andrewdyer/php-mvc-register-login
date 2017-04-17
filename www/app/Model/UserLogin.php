@@ -34,8 +34,6 @@ class UserLogin {
      */
     public static function createRememberCookie($userID) {
         $Db = Utility\Database::getInstance();
-
-        // 
         $check = $Db->select("user_cookies", ["user_id", "=", $userID]);
         if ($check->count()) {
             $hash = $check->first()->hash;
@@ -45,8 +43,6 @@ class UserLogin {
                 return false;
             }
         }
-
-        // 
         $cookie = Utility\Config::get("COOKIE_USER");
         $expiry = Utility\Config::get("COOKIE_DEFAULT_EXPIRY");
         return(Utility\Cookie::put($cookie, $hash, $expiry));
