@@ -20,10 +20,10 @@ class Model {
 
     /**
      * Construct:
-     * @access protected
+     * @access public
      * @since 1.0.2
      */
-    protected function __construct() {
+    public function __construct() {
         $this->Db = Utility\Database::getInstance();
     }
 
@@ -68,16 +68,15 @@ class Model {
      * @access protected
      * @param string $table
      * @param array $where
-     * @return boolean
+     * @return \App\Core\Model
      * @since 1.0.3
      */
     protected function find($table, array $where = []) {
         $data = $this->Db->select($table, $where);
         if ($data->count()) {
             $this->data = $data->first();
-            return true;
         }
-        return false;
+        return $this;
     }
 
     /**

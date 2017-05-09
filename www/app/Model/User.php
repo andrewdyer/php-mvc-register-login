@@ -15,17 +15,6 @@ use App\Utility;
 class User extends Core\Model {
 
     /**
-     * Construct:
-     * @access public
-     * @param string $user [optional]
-     * @since 1.0.2
-     */
-    public function __construct($user = null) {
-        parent::__construct();
-        $this->findUser($user);
-    }
-
-    /**
      * Create User: Inserts a new user into the database, returning the unique
      * user if successful, otherwise returns false.
      * @access public
@@ -35,7 +24,7 @@ class User extends Core\Model {
      * @throws Exception
      */
     public function createUser(array $fields) {
-        if (!$userID = parent::create("users", $fields)) {
+        if (!$userID = $this->create("users", $fields)) {
             throw new Exception(Utility\Text::get("USER_CREATE_EXCEPTION"));
         }
         return $userID;
@@ -50,10 +39,9 @@ class User extends Core\Model {
      * @since 1.0.2
      */
     public static function getInstance($user) {
-        if (($User = new User($user))) {
-            if ($User->exists()) {
-                return $User;
-            }
+        $User = new User();
+        if ($User->findUser($user)->exists()) {
+            return $User;
         }
         return null;
     }
@@ -69,8 +57,10 @@ class User extends Core\Model {
      */
     public function findUser($user) {
         $field = filter_var($user, FILTER_VALIDATE_EMAIL) ? "email" : (is_numeric($user) ? "id" : "username");
-        return(parent::find("users", [$field, "=", $user]));
+        return($this->find("users", [$field, "=", $user]));
     }
+    
+    
 
     /**
      * Update User: Updates a specified user record in the database.
@@ -82,7 +72,7 @@ class User extends Core\Model {
      * @throws Exception
      */
     public function updateUser(array $fields, $userID = null) {
-        if (!parent::update("users", $fields, $userID)) {
+        if (!$this->update("users", $fields, $userID)) {
             throw new Exception(Utility\Text::get("USER_UPDATE_EXCEPTION"));
         }
     }
