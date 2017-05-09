@@ -3,7 +3,10 @@
 namespace App\Core;
 
 use Exception;
-use App\Utility;
+use ReflectionClass;
+use ReflectionMethod;
+use App\Utility\Input;
+use App\Utility\Redirect;
 
 /**
  * Core App:
@@ -12,7 +15,7 @@ use App\Utility;
  * @since 1.0
  */
 class App {
-
+    
     /** @var mixed The default controller class. */
     private $_class = DEFAULT_CONTROLLER;
 
@@ -29,16 +32,13 @@ class App {
      * @since 1.0
      */
     public function __construct() {
+        $this->_parseURL();
         try {
-            $this->_parseURL();
             $this->_getClass();
             $this->_getMethod();
             $this->_getParams();
-            $this->_processApp();
         } catch (Exception $ex) {
-            header("HTTP/1.0 404 Not Found");
-            include VIEW_PATH . "_template/404.php";
-            exit();
+            Redirect::to(404);
         }
     }
 
@@ -57,7 +57,7 @@ class App {
             unset($this->_params[0]);
         }
         if (!class_exists($this->_class)) {
-            throw new Exception();
+            throw new Exception("The controller {$this->_class} does not exist!");
         }
         $this->_class = new $this->_class;
     }
@@ -76,8 +76,15 @@ class App {
             $this->_method = $this->_params[1];
             unset($this->_params[1]);
         }
-        if (!method_exists($this->_class, $this->_method)) {
-            throw new Exception();
+
+        // Check to ensure the requested controller method exists.
+        if (!(new ReflectionClass($this->_class))->hasMethod($this->_method)) {
+            throw new Exception("The controller method {$this->_method} does not exist!");
+        }
+
+        // Check to ensure the requested controller method is pubic.
+        if (!(new ReflectionMethod($this->_class, $this->_method))->isPublic()) {
+            throw new Exception("The controller method {$this->_method} is not accessible!");
         }
     }
 
@@ -99,7 +106,7 @@ class App {
      * @since 1.0
      */
     private function _parseURL() {
-        if (($url = Utility\Input::get("url"))) {
+        if (($url = Input::get("url"))) {
 
             // Trim, sanitise and return a exploded URL string.
             $this->_params = explode("/", filter_var(rtrim($url, "/"), FILTER_SANITIZE_URL));
@@ -107,12 +114,12 @@ class App {
     }
 
     /**
-     * Process App: Calls the controller class and method with parameters.
+     * Run: Calls the controller class and method with parameters.
      * @access private
      * @return void
      * @since 1.0.6
      */
-    private function _processApp() {
+    public function run() {
         call_user_func_array([$this->_class, $this->_method], $this->_params);
     }
 
