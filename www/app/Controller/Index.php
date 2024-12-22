@@ -9,7 +9,7 @@ use App\Utility;
 /**
  * Index Controller:
  *
- * @author Andrew Dyer <andrewdyer@outlook.com>
+ * @author Andrew Dyer
  * @since 1.0
  */
 class Index extends Core\Controller {

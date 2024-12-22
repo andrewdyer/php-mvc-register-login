@@ -9,7 +9,7 @@ use App\Utility;
 /**
  * Login Controller:
  *
- * @author Andrew Dyer <andrewdyer@outlook.com>
+ * @author Andrew Dyer
  * @since 1.0.2
  */
 class Login extends Core\Controller {

@@ -11,7 +11,7 @@ use App\Utility\Redirect;
 /**
  * Core App:
  *
- * @author Andrew Dyer <andrewdyer@outlook.com>
+ * @author Andrew Dyer
  * @since 1.0
  */
 class App {

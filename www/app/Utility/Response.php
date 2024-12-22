@@ -5,7 +5,7 @@ namespace App\Utility;
 /**
  * Response:
  *
- * @author Andrew Dyer <andrewdyer@outlook.com>
+ * @author Andrew Dyer
  * @since 1.0.6
  */
 class Response {

@@ -7,7 +7,7 @@ use App\Core;
 /**
  * Profile Presenter:
  *
- * @author Andrew Dyer <andrewdyer@outlook.com>
+ * @author Andrew Dyer
  * @since 1.0.6
  */
 class Profile extends Core\Presenter {

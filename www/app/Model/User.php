@@ -9,7 +9,7 @@ use App\Utility;
 /**
  * User Model:
  *
- * @author Andrew Dyer <andrewdyer@outlook.com>
+ * @author Andrew Dyer
  * @since 1.0.2
  */
 class User extends Core\Model {

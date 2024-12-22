@@ -7,7 +7,7 @@ use App\Utility;
 /**
  * Core Controller:
  *
- * @author Andrew Dyer <andrewdyer@outlook.com>
+ * @author Andrew Dyer
  * @since 1.0
  */
 class Controller {

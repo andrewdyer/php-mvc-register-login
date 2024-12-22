@@ -8,7 +8,7 @@ use App\Utility;
 /**
  * User Login Model:
  *
- * @author Andrew Dyer <andrewdyer@outlook.com>
+ * @author Andrew Dyer
  * @since 1.0.2
  */
 class UserLogin {

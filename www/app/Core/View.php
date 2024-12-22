@@ -5,7 +5,7 @@ namespace App\Core;
 /**
  * Core View:
  *
- * @author Andrew Dyer <andrewdyer@outlook.com>
+ * @author Andrew Dyer
  * @since 1.0
  */
 class View {

@@ -8,7 +8,7 @@ use PDOException;
 /**
  * Database:
  *
- * @author Andrew Dyer <andrewdyer@outlook.com>
+ * @author Andrew Dyer
  * @since 1.0.1
  */
 class Database {
